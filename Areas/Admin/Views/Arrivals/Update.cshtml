@@ -1,0 +1,36 @@
+﻿@model Arrival
+<div class="content-wrapper">
+    <div class="row">
+        <div class="card-body">
+            <h4 class="card-title">Update arrival</h4>
+            <form method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control form-control-lg">
+                    <span style="color:red" asp-validation-for="Name"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price"></label>
+                    <input asp-for="Price" class="form-control form-control-lg">
+                    <span style="color:red" asp-validation-for="Price"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Photo"></label>
+                    <input asp-for="Photo" class="form-control form-control-lg">
+                    <span style="color:red" asp-validation-for="Photo"></span>
+                </div>
+
+                <div class="d-flex">
+                    <button type="Submit" class="btn btn-primary m-2">Add</button>
+                    <a asp-controller="Arrivals" asp-action="Index" class="btn btn-secondary m-2">Cancel</a>
+                </div>
+            </form>
+        </div>
+
+
+
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,61 @@
+﻿@model List<PopularItem>
+<div class="d-flex justify-content-end">
+    <a asp-action="Create" class="btn btn-primary">Create</a>
+</div>
+<div class="table-responsive pt-3">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Image
+                </th>
+                <th>
+                    Status
+                </th>
+                <th style="text-align:end">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (PopularItem item in Model)
+            {
+                <tr>
+                    <td>
+                        <img style="width:100px;height:100px;border-radius:2px" src="~/assets/img/gallery/@item.Image" />
+                    </td>
+                    @if (!item.IsDeactive)
+                    {
+                        <td>
+                            <span class="badge badge-success">Active</span>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            
+                            <span class="badge badge-danger">Deactive</span>
+                        </td>
+                    }
+                    }
+                    <td class="d-flex justify-content-center">
+                        <a asp-action="Detail" asp-route-id="@item.Id" class="btn btn-warning m-2" style="color:white">Detail</a>
+                        <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-info m-2">Update</a>
+                        @if (item.IsDeactive)
+                        {
+                            <a asp-action="Activity" asp-route-id="@item.Id" class="btn rounded-pill btn-danger btn-fw m-2" style="width:126px">DeActivated</a>
+                        }
+                        else
+                        {
+                            <a asp-action="Activity" asp-route-id="@item.Id" class="btn rounded-pill btn-success btn-fw m-2" style="width:126px">Activated</a>
+                        }
+                    </td>
+
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>
